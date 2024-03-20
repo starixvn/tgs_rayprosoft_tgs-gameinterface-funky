@@ -78,7 +78,7 @@ public class GameWagerQueryServiceUnitTest
 		Assert.Equal(result.GameCode, actual.First().ExternalGameId);
 		Assert.Equal(GameWagerStatus.Loss, actual.First().Status);
 		Assert.Equal(result.BetTime, actual.First().ExternalCreatedOn);
-		Assert.Equal(currentTime, actual.First().ExternalClosedOn);
+		Assert.Equal(result.BetTime, actual.First().ExternalClosedOn);
 		Assert.Equal(107.1m, actual.First().Bet);
 		Assert.Equal(77.5m, actual.First().ValidBet);
 		Assert.Equal(62.7m, actual.First().Settle);
@@ -157,7 +157,7 @@ public class GameWagerQueryServiceUnitTest
 		Assert.Equal(result.GameCode, actual.First().ExternalGameId);
 		Assert.Equal(GameWagerStatus.Won, actual.First().Status);
 		Assert.Equal(result.BetTime, actual.First().ExternalCreatedOn);
-		Assert.Equal(currentTime, actual.First().ExternalClosedOn);
+		Assert.Equal(result.BetTime, actual.First().ExternalClosedOn);
 		Assert.Equal(0.76m, actual.First().Bet);
 		Assert.Equal(0.76m, actual.First().ValidBet);
 		Assert.Equal(6m, actual.First().Settle);
