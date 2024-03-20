@@ -1,0 +1,141 @@
+﻿syntax = "proto3";
+
+import "phoenix/protobuf/decimal.proto";
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "Tgs.GameInterface.Funky.Protos";
+
+package GameInterfaceFunky;
+
+// The greeting service definition.
+service GameInterfaceFunky {
+  // Sends a greeting
+  rpc PlayerBalance (PlayerBalanceRequest) returns (PlayerBalanceReply);
+  rpc FundIn (FundRequest) returns (FundReply);
+  rpc FundOut (FundRequest) returns (FundReply);
+  rpc FundStatus(FundStatusRequest) returns (BaseReply);
+  rpc GameUrl (GameUrlRequest) returns (GameUrlReply);
+  rpc GameWager (GameWagerRequest) returns (GameWagerReply);
+  rpc GameWagerDetail (GameWagerDetailRequest) returns (GameWagerDetailReply);
+  rpc CheckingService(CheckingServiceRequest) returns (CheckingServiceReply);
+}
+
+// The request message containing the user's name.
+
+message PlayerBalanceRequest {
+	string api_url = 1;
+	string user_agent = 2;
+	string authentication = 3;
+	string player_code = 4;
+	string currency = 5;
+}
+
+message FundRequest {
+	string api_url = 1;
+	string user_agent = 2;
+	string authentication = 3;
+	string player_code = 4;
+	string currency = 5;
+	string order_id = 6;
+	phoenix.protobuf.DecimalValue amount = 7;
+}
+
+message FundStatusRequest {
+	string api_url = 1;
+	string user_agent = 2;
+	string authentication = 3;
+	string player_code = 4;
+	string order_id = 5;
+}
+
+message GameUrlRequest {
+	string api_url = 1;
+	string user_agent = 2;
+	string authentication = 3;
+	string player_code = 4;
+	string currency = 5;
+	string language = 6;
+	string game_code = 7;
+	string player_ip = 8;
+	string redirect_url = 9;
+	string session_id = 10;
+	string user_names = 11;
+}
+
+message GameWagerRequest {
+	string api_url = 1;
+	string user_agent = 2;
+	string authentication = 3;
+	google.protobuf.Timestamp start_time = 4;
+	google.protobuf.Timestamp end_time = 5;
+	int32 page = 6;
+}
+
+message GameWagerDetailRequest {
+	string api_url = 1;
+	string user_agent = 2;
+	string authentication = 3;
+	string player_code = 4;
+	string game_code = 5;
+	string external_wager_id = 6;
+	string language = 7;
+}
+
+message CheckingServiceRequest{
+    string machine_name = 1;
+}
+
+// The response message containing the greetings.
+message BaseReply {
+	bool state = 1;
+}
+
+message PlayerBalanceReply {
+	phoenix.protobuf.DecimalValue balance = 2;
+}
+
+message FundReply {
+	int64 tx_serial_id = 1;
+	string tx_id = 2;
+	phoenix.protobuf.DecimalValue balance = 3;
+	string res = 4;
+}
+
+message GameUrlReply{
+	string game_url = 1;
+}
+
+message GameWagerDetailReply{
+	string game_wager_detail_url = 1;
+}
+
+message GameWagerReply {
+	repeated GameWagerInfo items = 1;
+}
+
+message  GameWagerInfo {
+	string external_wager_id = 1;
+	string external_game_id = 2;
+    string player_code = 3;
+	GameWagerStatus status = 4;
+	google.protobuf.Timestamp external_created_on = 5;
+	google.protobuf.Timestamp external_closed_on = 6;
+	phoenix.protobuf.DecimalValue bet = 7;
+	phoenix.protobuf.DecimalValue valid_bet = 8;
+	phoenix.protobuf.DecimalValue settle = 9;
+	phoenix.protobuf.DecimalValue win_loss = 10;
+	string additional_data = 11;
+}
+
+message CheckingServiceReply{
+    string machine_name = 1;
+}
+
+enum GameWagerStatus{
+	GAME_WAGER_STATUS_RUNNING = 0;
+	GAME_WAGER_STATUS_WON = 1;
+	GAME_WAGER_STATUS_LOSS = 2;
+	GAME_WAGER_STATUS_CANCELED = 3;
+	GAME_WAGER_STATUS_DRAW = 4;
+	GAME_WAGER_STATUS_VOIDED = 5;
+}
