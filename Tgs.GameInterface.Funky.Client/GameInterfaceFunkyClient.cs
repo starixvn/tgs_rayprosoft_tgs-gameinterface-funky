@@ -104,7 +104,7 @@ internal class GameInterfaceFunkyClient(
 		return reply.GameUrl;
 	}
 
-	public async IAsyncEnumerable<GameWagerInfo> GameWagerAsync(Uri apiUrl, string userAgent, string authentication, DateTime startTime, DateTime endTime, int page, [EnumeratorCancellation] CancellationToken cancellationToken = default)
+	public async IAsyncEnumerable<GameWagerInfo> GameWagerAsync(Uri apiUrl, string userAgent, string authentication, DateTimeOffset startTime, DateTimeOffset endTime, int page, [EnumeratorCancellation] CancellationToken cancellationToken = default)
 	{
 		var request = new GameWagerRequest
 		{

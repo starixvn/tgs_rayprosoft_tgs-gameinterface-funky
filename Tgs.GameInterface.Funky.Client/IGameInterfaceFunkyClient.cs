@@ -16,7 +16,7 @@ public interface IGameInterfaceFunkyClient
 
 	ValueTask<string> GameWagerDetailAsync(Uri apiUrl, string userAgent, string authentication, string playerCode, string gameCode, string externalWagerId, string language, CancellationToken cancellationToken = default);
 
-	IAsyncEnumerable<GameWagerInfo> GameWagerAsync(Uri apiUrl, string userAgent, string authentication, DateTime startTime, DateTime endTime, int page, CancellationToken cancellationToken = default);
+	IAsyncEnumerable<GameWagerInfo> GameWagerAsync(Uri apiUrl, string userAgent, string authentication, DateTimeOffset startTime, DateTimeOffset endTime, int page, CancellationToken cancellationToken = default);
 
 	ValueTask<decimal> PlayerBalanceAsync(Uri apiUrl, string userAgent, string authentication, string playerCode, string currency, CancellationToken cancellationToken = default);
 }
