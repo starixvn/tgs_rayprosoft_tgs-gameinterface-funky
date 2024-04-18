@@ -10,7 +10,6 @@ public class GameWagerQueryServiceUnitTest
 	[Fact]
 	public async Task Loss()
 	{
-		var fakeTimeProvider = Substitute.For<TimeProvider>();
 		var fakeGameReportApiClient = Substitute.For<IGameReportApiClient>();
 
 		var query = new GameWagerQuery(
@@ -20,10 +19,6 @@ public class GameWagerQueryServiceUnitTest
 			StartTime: new DateTimeOffset(2024, 3, 18, 17, 30, 00, TimeSpan.FromHours(+8)),
 			EndTime: new DateTimeOffset(2024, 3, 18, 18, 30, 00, TimeSpan.FromHours(+8)),
 			Page: 1);
-
-		var currentTime = new DateTimeOffset(2024, 03, 18, 17, 47, 20, TimeSpan.FromHours(8));
-		_ = fakeTimeProvider.GetUtcNow()
-			.Returns(currentTime);
 
 		var result = new BetResult(
 			PlayerId: "4ucmqplxb029",
@@ -64,7 +59,6 @@ public class GameWagerQueryServiceUnitTest
 			.Returns(new[] { result }.ToAsyncEnumerable());
 
 		var sut = new GameWagerQueryService(
-			fakeTimeProvider,
 			fakeGameReportApiClient);
 
 		var actual = await sut.QueryAsync(
@@ -89,7 +83,6 @@ public class GameWagerQueryServiceUnitTest
 	[Fact]
 	public async Task Won()
 	{
-		var fakeTimeProvider = Substitute.For<TimeProvider>();
 		var fakeGameReportApiClient = Substitute.For<IGameReportApiClient>();
 
 		var query = new GameWagerQuery(
@@ -99,10 +92,6 @@ public class GameWagerQueryServiceUnitTest
 			StartTime: new DateTimeOffset(2024, 3, 19, 11, 00, 00, TimeSpan.FromHours(+8)),
 			EndTime: new DateTimeOffset(2024, 3, 19, 12, 00, 00, TimeSpan.FromHours(+8)),
 			Page: 1);
-
-		var currentTime = new DateTimeOffset(2024, 03, 19, 11, 14, 2, TimeSpan.FromHours(8));
-		_ = fakeTimeProvider.GetUtcNow()
-			.Returns(currentTime);
 
 		var result = new BetResult(
 			PlayerId: "4ucmqplxb029",
@@ -143,7 +132,6 @@ public class GameWagerQueryServiceUnitTest
 			.Returns(new[] { result }.ToAsyncEnumerable());
 
 		var sut = new GameWagerQueryService(
-			fakeTimeProvider,
 			fakeGameReportApiClient);
 
 		var actual = await sut.QueryAsync(

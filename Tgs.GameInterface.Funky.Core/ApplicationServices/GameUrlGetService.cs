@@ -28,7 +28,11 @@ internal class GameUrlGetService(IGameApiClient client) : IGetService<GameUrlQue
 		var path = new Uri(result.GameUrl);
 		var builder = new UriBuilder(path);
 		var parseQuery = HttpUtility.ParseQueryString(builder.Query);
-		parseQuery["token"] = result.Token;
+		if (string.IsNullOrEmpty(parseQuery["token"]?.ToString() ?? string.Empty))
+		{
+			parseQuery["token"] = result.Token;
+		}
+
 		builder.Query = parseQuery.ToString();
 
 		return HttpUtility.UrlDecode(builder.ToString());

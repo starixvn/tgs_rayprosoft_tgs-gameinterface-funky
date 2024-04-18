@@ -5,7 +5,6 @@ using Tgs.ServiceUtility;
 namespace Tgs.GameInterface.Funky.Core.ApplicationServices;
 
 internal class GameWagerQueryService(
-	TimeProvider timeProvider,
 	IGameReportApiClient client) : IQueryService<GameWagerQuery, GameWagerResult>
 {
 	public async IAsyncEnumerable<GameWagerResult> QueryAsync(GameWagerQuery query, [EnumeratorCancellation] CancellationToken cancellationToken = default)
