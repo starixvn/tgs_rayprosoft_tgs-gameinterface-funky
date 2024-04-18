@@ -133,7 +133,7 @@ public class GameInterfaceFunkyGrpcService(
 			EndTime: request.EndTime.ToDateTimeOffset(),
 			Page: request.Page);
 
-		var results = await gameWagerService.QueryAsync(
+		var gameWagers = await gameWagerService.QueryAsync(
 			query: query,
 			cancellationToken: context.CancellationToken)
 			.ToArrayAsync(
@@ -143,25 +143,22 @@ public class GameInterfaceFunkyGrpcService(
 
 		var reply = new GameWagerReply();
 
-		if (results.Any())
+		if (gameWagers.Any())
 		{
-			foreach (var result in results)
+			reply.Items.AddRange(gameWagers.Select(gameWager => new GameWagerInfo
 			{
-				reply.Items.Add(new GameWagerInfo
-				{
-					ExternalWagerId = result.ExternalWagerId,
-					ExternalGameId = result.ExternalGameId,
-					PlayerCode = result.PlayerCode,
-					Status = (GameWagerStatus)result.Status,
-					ExternalCreatedOn = result.ExternalCreatedOn.ToTimestamp(),
-					ExternalClosedOn = result.ExternalClosedOn.ToTimestamp(),
-					Bet = result.Bet,
-					ValidBet = result.ValidBet,
-					Settle = result.Settle,
-					WinLoss = result.WinLoss,
-					AdditionalData = result.AdditionalData
-				});
-			}
+				ExternalWagerId = gameWager.ExternalWagerId,
+				ExternalGameId = gameWager.ExternalGameId,
+				PlayerCode = gameWager.PlayerCode,
+				Status = (GameWagerStatus)gameWager.Status,
+				ExternalCreatedOn = gameWager.ExternalCreatedOn.ToTimestamp(),
+				ExternalClosedOn = gameWager.ExternalClosedOn.ToTimestamp(),
+				Bet = gameWager.Bet,
+				ValidBet = gameWager.ValidBet,
+				Settle = gameWager.Settle,
+				WinLoss = gameWager.WinLoss,
+				AdditionalData = gameWager.AdditionalData
+			}));
 		}
 
 		return reply;
