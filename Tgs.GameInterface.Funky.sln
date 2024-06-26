@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tgs.GameInterface.Funky.Cor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tgs.GameInterface.Funky.Core.UnitTest", "Tgs.GameInterface.Funky.Core.UnitTest\Tgs.GameInterface.Funky.Core.UnitTest.csproj", "{A2DAAE70-3E42-4F54-BC86-F41CDA88E64C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tgs.GameInterface.Funky.Client", "Tgs.GameInterface.Funky.Client\Tgs.GameInterface.Funky.Client.csproj", "{167B9664-408C-429A-899B-03F7C7A7BB83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tgs.GameInterface.Funky.Client", "Tgs.GameInterface.Funky.Client\Tgs.GameInterface.Funky.Client.csproj", "{167B9664-408C-429A-899B-03F7C7A7BB83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tgs.GameInterface.Funky.Protos", "Tgs.GameInterface.Funky.Protos\Tgs.GameInterface.Funky.Protos.csproj", "{7D1273CB-AB7A-46C3-9417-9B1B43FA7620}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{167B9664-408C-429A-899B-03F7C7A7BB83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{167B9664-408C-429A-899B-03F7C7A7BB83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{167B9664-408C-429A-899B-03F7C7A7BB83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D1273CB-AB7A-46C3-9417-9B1B43FA7620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D1273CB-AB7A-46C3-9417-9B1B43FA7620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D1273CB-AB7A-46C3-9417-9B1B43FA7620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D1273CB-AB7A-46C3-9417-9B1B43FA7620}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

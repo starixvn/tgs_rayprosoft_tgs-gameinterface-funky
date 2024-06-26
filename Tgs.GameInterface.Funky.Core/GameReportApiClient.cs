@@ -1,13 +1,14 @@
-﻿using System.Text.Json.Serialization;
-using System.Text.Json;
-using Microsoft.Extensions.Logging;
-using Tgs.GameInterface.Funky.Core.Models;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Net.Http.Json;
-using System.Text.Json.Nodes;
-using Tgs.GameInterface.Funky.Core.Extensions;
-using Tgs.GameInterface.Funky.Core.Exceptions;
 using System.Runtime.CompilerServices;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+
+using System.Text.Json.Serialization;
+using Microsoft.Extensions.Logging;
+using Tgs.GameInterface.Funky.Core.Exceptions;
+using Tgs.GameInterface.Funky.Core.Extensions;
+using Tgs.GameInterface.Funky.Core.Models;
 using Tgs.SerialNumberGenerator;
 
 namespace Tgs.GameInterface.Funky.Core;
