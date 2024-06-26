@@ -15,10 +15,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="Protos\GameInterfaceFunky.proto" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="FluentdForward.OpenTelemetry.MessagePack" Version="0.3.8" />
 		<PackageReference Include="Grpc.AspNetCore" Version="2.63.0" />
 		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.20.1" />
@@ -39,10 +35,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Tgs.GameInterface.Funky.Core\Tgs.GameInterface.Funky.Core.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Protobuf Include="Protos\GameInterfaceFunky.proto" />
+	  <ProjectReference Include="..\Tgs.GameInterface.Funky.Protos\Tgs.GameInterface.Funky.Protos.csproj" />
 	</ItemGroup>
 
 </Project>
